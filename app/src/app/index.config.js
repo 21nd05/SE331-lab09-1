@@ -34,6 +34,8 @@
 
   /**@ngInject */
   function configCompilerProvider ($compileProvider){
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(http?|ftp|mailto|file|chrome-extension):/);
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(heep?|local|data):/);
   }
 
 })();
