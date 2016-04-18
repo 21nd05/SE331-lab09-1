@@ -34,6 +34,7 @@
 
     <!-- Table -->
     <table class="table table-hover">
+      <div cg-busy="{promise:vm.queryPromise,message:'Wait for me',backdrop:true,minDuration:5000}"></div>
         <tr>
             <th>#</th>
             <th translate>listProduct.name </th>

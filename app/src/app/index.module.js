@@ -2,6 +2,12 @@
   'use strict';
 
   angular
-    .module('app', [ 'ngRoute', 'ngResource','pascalprecht.translate', 'flow','ngResource+apiPrefix']);
+    .module('app',
+      [ 'ngRoute',
+        'ngResource',
+        'pascalprecht.translate',
+        'flow',
+        'ngResource+apiPrefix',
+        'cgBusy']);
 
 })();
