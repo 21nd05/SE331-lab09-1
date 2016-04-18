@@ -11,7 +11,7 @@
 
   /** @ngInject */
   function productService($resource){
-    return $resource('http://localhost:8080/product/:id', { id: '@_id' }, {
+    return $resource('/product/:id', { id: '@_id' }, {
       update: {
         method: 'PUT' // this method issues a PUT request
       }});
@@ -35,7 +35,7 @@
 
   /** @ngInject */
   function queryProductService($resource) {
-    return $resource('http://localhost:8080/getProduct/?name=:name',
+    return $resource('/getProduct/?name=:name',
       {
         query: {method: 'GET', params: {name: ''}, isArray: true}
 
