@@ -7,30 +7,33 @@
     .config(configCompilerProvider)
     .config(configFlowFactoryProvider);
 
+
   /** @ngInject */
-  function  configTranslation($translateProvider){
+  function configTranslation ($translateProvider){
     $translateProvider.useUrlLoader('http://localhost:8080/messageBundle');
     $translateProvider.useStorage('UrlLanguageStorage');
     $translateProvider.preferredLanguage('en');
-    $translateProvider.failbackLanguage('en');
+    $translateProvider.fallbackLanguage('en');
+  }
+
+  /** @ngInject */
+  function configFlowFactoryProvider (flowFactoryProvider){
+    flowFactoryProvider.defaults = {
+      target:'',
+      permanentErrors: [500,501],
+      maxChunkRetries: 1,
+      chunkRetryInterval: 5000,
+      simultaneousUploads: 4,
+      singleFile: false
+    };
+    /*flowFactoryProvider.on('catchAll', function () {
+     console.log('catchAll', arguments);
+     });*/
+
+  }
+
+  /**@ngInject */
+  function configCompilerProvider ($compileProvider){
   }
 
 })();
-
-/** @ngInject */
-function configFlowFactoryProvider(flowFactoryProvider){
-  flowFactoryProvider.defaults = {
-    target: '',
-    permanentErrors: [500,501],
-    maxChunkRetries: 1,
-    chunkRetryInterval: 5000,
-    simultaneousUploads: 4,
-    singleFile: false
-  }
-}
-
-/** @ngInject */
-function configCompilerProvider($compilerProvider){
-  $compilerProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|chrome-extension):/);
-  $compilerProvider.imgSrcSanitizationWhitelist(/^\s*(http?|local|data):/);
-}
